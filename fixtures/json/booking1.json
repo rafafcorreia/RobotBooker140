@@ -1,0 +1,11 @@
+{
+    "firstname" : "Fulano",
+    "lastname" : "Ciclano",
+    "totalprice" : 2404,
+    "depositpaid" : false,
+    "bookingdates" : {
+        "checkin" : "2018-10-15",
+        "checkout" : "2018-10-20"
+    },
+    "additionalneeds" : "Piscina"
+}
