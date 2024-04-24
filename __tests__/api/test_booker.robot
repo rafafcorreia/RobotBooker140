@@ -6,9 +6,10 @@ Suite Setup    Create Token    ${url}
 
 *** Test Cases ***
 Create Booking
+    ${header}    Create Dictionary    Content-Type=${content_type}
     ${body}    Evaluate    json.loads(open('./fixtures/json/booking1.json').read())
     
-    ${response}    POST    url=${url}/booking    json=${body}
+    ${response}    POST    url=${url}/booking    json=${body}    headers=${header}
 
     ${response_body}    Set Variable    ${response.json()}
     
@@ -40,7 +41,7 @@ Get Booking
 
 Update Booking
     Get Booking Id    ${url}    ${firstname}    ${lastname}
-    ${header}    Create Dictionary    Cookie=token=${token}
+    ${header}    Create Dictionary    Cookie=token=${token}    Content-Type=${content_type}
     ${body}    Create Dictionary    firstname=${firstname}    lastname=${lastname}    
     ...    totalprice=${totalprice}    depositpaid=${new_depositpaid}    
     ...    bookingdates=${bookingdates}    additionalneeds=${additionalneeds}
@@ -61,7 +62,7 @@ Update Booking
 
 Partial Update Booking
     Get Booking Id    ${url}    ${firstname}    ${lastname}
-    ${header}    Create Dictionary    Cookie=token=${token}
+    ${header}    Create Dictionary    Cookie=token=${token}    Content-Type=${content_type}
     ${body}    Create Dictionary    lastname=${new_lastname}    additionalneeds=${new_additionalneeds}
 
     ${response}    PATCH    url=${url}/booking/${bookingid}    headers=${header}    json=${body}

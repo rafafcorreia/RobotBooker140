@@ -1,12 +1,13 @@
 *** Settings ***
 Library    RequestsLibrary
+Variables    ../resources/variables.py
 
 *** Keywords ***
 Create Token
     [Arguments]    ${url}
-
+    ${header}    Create Dictionary    Content-Type=${content_type}
     ${body}    Create Dictionary    username=admin    password=password123
-    ${response}    POST    url=${url}/auth    json=${body}
+    ${response}    POST    url=${url}/auth    json=${body}    headers=${header}
 
     Status Should Be    200
     ${token}    Set Variable    ${response.json()}[token]

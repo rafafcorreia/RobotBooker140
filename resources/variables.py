@@ -1,4 +1,5 @@
 url = 'https://restful-booker.herokuapp.com'
+content_type = 'application/json'
 firstname = 'Fulano'
 lastname = 'Ciclano'
 totalprice = 2404
