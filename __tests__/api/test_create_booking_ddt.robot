@@ -1,15 +1,11 @@
 *** Settings ***
 Library    RequestsLibrary
 Library    DataDriver    ../../fixtures/csv/booking.csv    dialect=excel
-Resource    ../../resources/common.resource
 Variables    ../../resources/variables.py
-Test Setup    Create Token    ${url}
 Test Template    Create Booking DDT
 
 *** Test Cases ***
-Exemplo 1    ${firstname}    ${lastname}    ${totalprice}    ${depositpaid}    ${checkin}    ${checkout}    ${additionalneeds}
-Exemplo 2    ${firstname}    ${lastname}    ${totalprice}    ${depositpaid}    ${checkin}    ${checkout}    ${additionalneeds}
-
+Create Booking Successfully
 
 *** Keywords ***
 Create Booking DDT
